@@ -1,19 +1,19 @@
+dobavit = document.querySelector('.dobavitbtn');
+delete1 = document.querySelector('.delete');
 sort1 = document.querySelector('.sort1');
 sort2 = document.querySelector('.sort2');
-delete1 = document.querySelector('.delete');
 input = document.querySelector('.input');
-dobavitbtn = document.querySelector('.dobavitbtn');
 listcont = document.createElement('ul');
 listcont.classList.add('listcontain');
 inputcontainer = document.querySelector('.inputcontainer');
-plusbtn = document.querySelector('.plusbtn');
+plus = document.querySelector('.plusbtn');
 iconreng = document.querySelector('.iconreng');
 buttons = document.querySelector('.buttons');
-body = document.querySelector('body');
 konteynerlistlerin = document.querySelector('.konteynerlistlerin');
 warningresult = document.querySelector('.warningresult');
 searchinput = document.querySelector('.searchinput');
 searchiconn = document.querySelector('.searchiconn');
+body = document.querySelector('body');
 
 
 sort1.addEventListener('mouseover', ()=>{
@@ -41,7 +41,7 @@ delete1.addEventListener('click', ()=>{
 })
 
 
-dobavitbtn.addEventListener('click', ()=>{
+dobavit.addEventListener('click', ()=>{
     if(input.value.length >= 0 && input.value.length <= 20){
         listcont.style.display = 'block';
         li = document.createElement('li');
@@ -81,7 +81,7 @@ dobavitbtn.addEventListener('click', ()=>{
 
         editsss = document.querySelectorAll('.edit');
         paredits = document.querySelectorAll('p');
-        listiciss = document.querySelectorAll('.listici');
+        innerlist = document.querySelectorAll('.listici');
 
 
         for(let i=0; i<editsss.length; i++){
@@ -94,7 +94,7 @@ dobavitbtn.addEventListener('click', ()=>{
             editsss[i].addEventListener('click', ()=>{
                 inputcontainer.style.display = 'block';
                 input.value = `${paredits[i].innerText}`;
-                listiciss[i].style.display = 'none';
+                innerlist[i].style.display = 'none';
             })
         }
 
@@ -115,7 +115,7 @@ dobavitbtn.addEventListener('click', ()=>{
         }
 
 
-        plusbtn.addEventListener('click', ()=>{
+        plus.addEventListener('click', ()=>{
             inputcontainer.style.display = 'block';
         })
     }
@@ -152,81 +152,44 @@ dobavitbtn.addEventListener('click', ()=>{
             ppp[i].innerHTML = datap[i];
         }
     }) 
-                
-              
-
-
-
-
-
-
-
-
-
+               
 input.addEventListener('keyup', (e)=>{
-
     if(e.target.value.length == 0){
-
         warningresult.style.display = 'block';
         warningresult.innerHTML = 'Please include something';
-
-    }else if(e.target.value.length > 20){
-
+    }
+    else if(e.target.value.length > 20){
         warningresult.style.display = 'block';
         warningresult.innerHTML = 'More than 20 character';
-    
-    }else{
-
-        warningresult.style.display = 'none';
-
     }
-
+    else{
+        warningresult.style.display = 'none';
+    }
 })
 
-
-
     searchiconn.addEventListener('click', ()=>{
-
         searchinput.style.display = 'block';
-
         searchinput.addEventListener('keyup', (e)=>{
-
             searchppp = document.querySelectorAll('p');
             searchlistleri = document.querySelectorAll('li')
+            
             for(let i=0; i<searchppp.length; i++){
-
                 for(let j=0; j<searchppp[i].innerText.length; j++){
-
                     if(searchppp[i].textContent.toLowerCase().includes(searchinput.value.toLowerCase())){
-
                         searchlistleri[i].style.display = "";    
-
-                    }else{
-                        
-                        searchlistleri[i].style.display = "none";
-                        
                     }
-
+                    else{ 
+                        searchlistleri[i].style.display = "none";                
+                    }
                 }
-
             }
-
         })
-
-
     })
 
     searchiconn.addEventListener('dblclick', ()=>{
         searchinput.style.display = 'none';
     })
 
-
-
 new Sortable(listcont, {
     animation: 350
 });
-
-
-
-
-
